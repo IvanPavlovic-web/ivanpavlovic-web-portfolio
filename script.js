@@ -128,6 +128,7 @@ const translations = {
         "NCR Voyix Agent Tool",
         "Vatroservis Centar",
         "SweetForma",
+        "MI Studio - Visual & Print Studio",
       ],
     },
     pricing: {
@@ -289,6 +290,7 @@ const translations = {
         "NCR Voyix Agent Tool",
         "Vatroservis Centar",
         "SweetForma",
+        "MI Studio - Visual & Print Studio",
       ],
     },
     pricing: {
@@ -851,3 +853,4 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
