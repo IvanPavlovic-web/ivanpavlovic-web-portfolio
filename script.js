@@ -20,6 +20,7 @@ let currentLang = "en";
 let currentIndex = 0;
 let currentText = "";
 let isDeleting = false;
+let typingTimeout;
 const typingElement = document.querySelector(".typing-text");
 
 function type() {
@@ -45,7 +46,7 @@ function type() {
     typeSpeed = 500;
   }
 
-  setTimeout(type, typeSpeed);
+  typingTimeout = setTimeout(type, typeSpeed);
 }
 
 // Language Switcher
@@ -85,22 +86,11 @@ const translations = {
             "Studied Computer Science with a focus on Programming and Software Engineering. Gained strong foundations in algorithms, software design, databases, web technologies, and applied computer science.",
         },
         1: {
-          title: "CS50x — Introduction to Computer Science",
-          subtitle: "HarvardX",
+          title: "High School Diploma — Computer Technician",
+          subtitle:
+            "Secondary School of Electrical Engineering and Computer Science | Banja Luka, BiH",
           description:
-            "Broad introduction to computer science covering C, Python, algorithms, data structures, SQL, web development, and system design.",
-        },
-        2: {
-          title: "CS50p — Programming with Python",
-          subtitle: "HarvardX",
-          description:
-            "Focused exclusively on Python programming, covering OOP, testing, exception handling, libraries, and real-world software development.",
-        },
-        3: {
-          title: "Frontend Expert Certification",
-          subtitle: "Frontend Expert / DesignCourse",
-          description:
-            "Specialized training in modern frontend development including HTML, CSS, JavaScript, UI/UX principles, responsive design, and best practices.",
+            "Completed comprehensive education in computer science fundamentals, hardware, software, and networking. Developed practical skills in computer maintenance, programming basics, and IT systems.",
         },
         4: {
           title: "L2 Technical Support Specialist – Payments & Systems",
@@ -131,79 +121,71 @@ const translations = {
         "MI Studio - Visual & Print Studio",
       ],
     },
-    pricing: {
-      title: "Pricing",
-      static: {
-        title: "Static Website",
-        subtitle:
-          "Perfect for portfolios, landing pages, and informational sites",
-        period: "One-time payment",
-        features: [
-          "Modern, responsive design",
-          "Fast loading times",
-          "SEO optimized",
-          "Mobile-first approach",
-          "Cross-browser compatible",
-          "Contact forms",
-          "Basic animations",
-        ],
-      },
-      dynamic: {
-        badge: "Most Popular",
-        title: "Dynamic Website",
-        subtitle:
-          "Interactive sites with advanced functionality and user experiences",
-        period: "One-time payment",
-        features: [
-          "Everything in Static",
-          "React components",
-          "Dynamic content management",
-          "User authentication",
-          "API integrations",
-          "Database connectivity",
-          "Real-time updates",
-          "Interactive dashboards",
-        ],
-      },
-      custom: {
-        title: "Custom Solutions",
-        subtitle:
-          "Full-stack applications with custom backend and advanced features",
-        period: "Based on project scope",
-        features: [
-          "Everything in Dynamic",
-          "Custom Python backend",
-          "RESTful API development",
-          "Complex database design",
-          "Third-party integrations",
-          "Payment processing",
-          "Admin panels",
-          "Cloud deployment",
-          "Scalable architecture",
-          "Ongoing support",
-        ],
-      },
-      cta: {
-        title: "Ready to start your project?",
-        subtitle:
-          "Let's discuss your requirements and bring your vision to life",
-        button: "Contact Me",
+    certificates: {
+      title: "Professional Certificates",
+      items: {
+        0: {
+          title: "CS50x — HarvardX",
+          description:
+            "Comprehensive introduction to computer science covering C, Python, algorithms, data structures, SQL, web development, and system design.",
+          tags: [
+            "C Programming",
+            "Python",
+            "Algorithms",
+            "Data Structures",
+            "SQL",
+          ],
+        },
+        1: {
+          title: "CS50p — HarvardX",
+          description:
+            "Focused exclusively on Python programming, covering OOP, testing, exception handling, libraries, and real-world software development.",
+          tags: ["Python", "OOP", "APIs", "Testing", "Libraries"],
+        },
+        2: {
+          title: "Frontend Expert Certification",
+          description:
+            "Specialized training in modern frontend development including HTML, CSS, JavaScript, UI/UX principles, responsive design, and best practices.",
+          tags: [
+            "JavaScript",
+            "CSS",
+            "UI/UX",
+            "Responsive Design",
+            "Modern Web",
+          ],
+        },
       },
     },
-    modal: {
-      title: "Let's Work Together",
-      subtitle:
-        "Fill out the form below and I'll get back to you within 24 hours",
+    contact: {
+      title: "Contact Me",
+      subtitle: "Let's discuss your requirements and bring your vision to life",
+      infoTitle: "Get in touch",
+      infoText:
+        "I'm available for freelance projects and full-time opportunities. Feel free to reach out if you want to collaborate!",
+      formTitle: "Send me a message",
       nameLabel: "Your Name",
       emailLabel: "Email Address",
       projectLabel: "Project Type",
       messageLabel: "Message",
       namePlaceholder: "John Doe",
       emailPlaceholder: "john@example.com",
-      projectPlaceholder: "e.g., Dynamic Website, Custom Solution",
+      projectPlaceholder: "Select project type",
       messagePlaceholder: "Tell me about your project...",
       submitButton: "Send Message",
-      contactMethods: ["Email", "LinkedIn", "GitHub"],
+      contactMethods: {
+        email: {
+          title: "Email",
+          subtitle: "ipdeveloper2001@gmail.com",
+        },
+        linkedin: {
+          title: "LinkedIn",
+          subtitle: "Connect with me",
+        },
+        github: {
+          title: "GitHub",
+          subtitle: "View my projects",
+        },
+      },
     },
     footer: {
       timezone: "CET",
@@ -247,22 +229,11 @@ const translations = {
             "Studirao sam računarstvo sa fokusom na programiranje i softversko inženjerstvo. Stekao sam čvrste osnove u algoritmima, dizajnu softvera, bazama podataka, web tehnologijama i primenjenom računarstvu.",
         },
         1: {
-          title: "CS50x — Uvod u računarstvo",
-          subtitle: "HarvardX",
+          title: "Srednja škola — Tehničar računarstva",
+          subtitle:
+            "Srednja elektrotehnička i računarska škola | Banja Luka, BiH",
           description:
-            "Širok uvod u računarstvo koji pokriva C, Python, algoritme, strukture podataka, SQL, web razvoj i dizajn sistema.",
-        },
-        2: {
-          title: "CS50p — Programiranje u Pythonu",
-          subtitle: "HarvardX",
-          description:
-            "Fokusiran isključivo na Python programiranje, pokriva OOP, testiranje, obradu izuzetaka, biblioteke i razvoj softvera u stvarnom svetu.",
-        },
-        3: {
-          title: "Frontend ekspert sertifikat",
-          subtitle: "Frontend Expert / DesignCourse",
-          description:
-            "Specijalizovana obuka u modernom frontend razvoju uključujući HTML, CSS, JavaScript, UI/UX principe, responzivni dizajn i najbolje prakse.",
+            "Završio sam sveobuhvatno obrazovanje u osnovama računarstva, hardveru, softveru i mrežama. Razvio sam praktične veštine u održavanju računara, osnovama programiranja i IT sistemima.",
         },
         4: {
           title: "L2 Tehnička podrška specijalista – Plaćanja i sistemi",
@@ -293,77 +264,71 @@ const translations = {
         "MI Studio - Visual & Print Studio",
       ],
     },
-    pricing: {
-      title: "Cenovnik",
-      static: {
-        title: "Statički vebsajt",
-        subtitle:
-          "Savršen za portfolije, odredišne stranice i informativne sajtove",
-        period: "Jednokratna uplata",
-        features: [
-          "Moderan, responzivan dizajn",
-          "Brzo učitavanje",
-          "SEO optimizovan",
-          "Prilagođen mobilnim uređajima",
-          "Kompatibilan sa svim pregledačima",
-          "Kontakt forme",
-          "Osnovne animacije",
-        ],
-      },
-      dynamic: {
-        badge: "Najpopularnije",
-        title: "Dinamički vebsajt",
-        subtitle:
-          "Interaktivni sajtovi sa naprednom funkcionalnošću i korisničkim iskustvima",
-        period: "Jednokratna uplata",
-        features: [
-          "Sve iz statičkog",
-          "React komponente",
-          "Upravljanje dinamičkim sadržajem",
-          "Autentifikacija korisnika",
-          "API integracije",
-          "Povezivanje sa bazom podataka",
-          "Ažuriranje u realnom vremenu",
-          "Interaktivni kontrolni paneli",
-        ],
-      },
-      custom: {
-        title: "Prilagođena rešenja",
-        subtitle:
-          "Full-stack aplikacije sa prilagođenim backend-om i naprednim funkcijama",
-        period: "Na osnovu obima projekta",
-        features: [
-          "Sve iz dinamičkog",
-          "Prilagođeni Python backend",
-          "Razvoj RESTful API-ja",
-          "Kompleksan dizajn baze podataka",
-          "Integracije trećih strana",
-          "Obrada plaćanja",
-          "Administratorski paneli",
-          "Cloud deploy",
-          "Skalabilna arhitektura",
-          "Kontinuirana podrška",
-        ],
-      },
-      cta: {
-        title: "Spremni da započnete svoj projekat?",
-        subtitle: "Razgovarajmo o vašim zahtevima i ostvarimo vašu viziju",
-        button: "Kontaktirajte me",
+    certificates: {
+      title: "Profesionalni sertifikati",
+      items: {
+        0: {
+          title: "CS50x — HarvardX",
+          description:
+            "Sveobuhvatan uvod u računarstvo koji pokriva C, Python, algoritme, strukture podataka, SQL, web razvoj i dizajn sistema.",
+          tags: [
+            "C Programiranje",
+            "Python",
+            "Algoritmi",
+            "Strukture podataka",
+            "SQL",
+          ],
+        },
+        1: {
+          title: "CS50p — HarvardX",
+          description:
+            "Fokusiran isključivo na Python programiranje, pokriva OOP, testiranje, obradu izuzetaka, biblioteke i razvoj softvera u stvarnom svetu.",
+          tags: ["Python", "OOP", "API-ji", "Testiranje", "Biblioteke"],
+        },
+        2: {
+          title: "Frontend ekspert sertifikat",
+          description:
+            "Specijalizovana obuka u modernom frontend razvoju uključujući HTML, CSS, JavaScript, UI/UX principe, responzivni dizajn i najbolje prakse.",
+          tags: [
+            "JavaScript",
+            "CSS",
+            "UI/UX",
+            "Responzivni dizajn",
+            "Moderni web",
+          ],
+        },
       },
     },
-    modal: {
-      title: "Hajde da radimo zajedno",
-      subtitle: "Popunite formu ispod i javiću vam se u roku od 24 sata",
+    contact: {
+      title: "Kontaktirajte me",
+      subtitle: "Razgovarajmo o vašim zahtevima i ostvarimo vašu viziju",
+      infoTitle: "Stupite u kontakt",
+      infoText:
+        "Dostupan sam za freelance projekte i full-time prilike. Slobodno me kontaktirajte ako želite da sarađujemo!",
+      formTitle: "Pošaljite mi poruku",
       nameLabel: "Vaše ime",
       emailLabel: "Email adresa",
       projectLabel: "Tip projekta",
       messageLabel: "Poruka",
       namePlaceholder: "Marko Marković",
       emailPlaceholder: "marko@primer.com",
-      projectPlaceholder: "npr., Dinamički vebsajt, Prilagođeno rešenje",
+      projectPlaceholder: "Izaberite tip projekta",
       messagePlaceholder: "Recite mi o svom projektu...",
       submitButton: "Pošaljite poruku",
-      contactMethods: ["Email", "LinkedIn", "GitHub"],
+      contactMethods: {
+        email: {
+          title: "Email",
+          subtitle: "ipdeveloper2001@gmail.com",
+        },
+        linkedin: {
+          title: "LinkedIn",
+          subtitle: "Povežite se sa mnom",
+        },
+        github: {
+          title: "GitHub",
+          subtitle: "Pogledajte moje projekte",
+        },
+      },
     },
     footer: {
       timezone: "CET",
@@ -460,102 +425,72 @@ function switchLanguage(lang) {
     }
   });
 
-  // Update Pricing section
-  document.querySelector(".pricing-header h2").textContent = t.pricing.title;
+  // Update Certificates section
+  document.querySelector(".certificates-header h2").textContent =
+    t.certificates.title;
 
-  const pricingCards = document.querySelectorAll(".pricing-card");
+  const certificateCards = document.querySelectorAll(".certificate-card");
+  certificateCards.forEach((card, index) => {
+    if (t.certificates.items[index]) {
+      const content = card.querySelector(".certificate-content");
+      content.querySelector("h3").textContent =
+        t.certificates.items[index].title;
+      content.querySelector("p").textContent =
+        t.certificates.items[index].description;
 
-  // Static website
-  pricingCards[0].querySelector(".pricing-title").textContent =
-    t.pricing.static.title;
-  pricingCards[0].querySelector(".pricing-subtitle").textContent =
-    t.pricing.static.subtitle;
-  pricingCards[0].querySelector(".pricing-period").textContent =
-    t.pricing.static.period;
-  const staticFeatures = pricingCards[0].querySelectorAll(
-    ".pricing-features li"
-  );
-  t.pricing.static.features.forEach((feature, i) => {
-    if (staticFeatures[i]) {
-      staticFeatures[i].textContent = feature;
+      const tagsContainer = content.querySelector(".certificate-tags");
+      tagsContainer.innerHTML = "";
+      t.certificates.items[index].tags.forEach((tag) => {
+        const tagElement = document.createElement("span");
+        tagElement.className = "cert-tag";
+        tagElement.textContent = tag;
+        tagsContainer.appendChild(tagElement);
+      });
     }
   });
 
-  // Dynamic website
-  pricingCards[1].querySelector(".pricing-badge").textContent =
-    t.pricing.dynamic.badge;
-  pricingCards[1].querySelector(".pricing-title").textContent =
-    t.pricing.dynamic.title;
-  pricingCards[1].querySelector(".pricing-subtitle").textContent =
-    t.pricing.dynamic.subtitle;
-  pricingCards[1].querySelector(".pricing-period").textContent =
-    t.pricing.dynamic.period;
-  const dynamicFeatures = pricingCards[1].querySelectorAll(
-    ".pricing-features li"
-  );
-  t.pricing.dynamic.features.forEach((feature, i) => {
-    if (dynamicFeatures[i]) {
-      dynamicFeatures[i].textContent = feature;
-    }
-  });
+  // Update Contact section
+  document.querySelector(".contact-header h2").textContent = t.contact.title;
+  document.querySelector(".contact-subtitle").textContent = t.contact.subtitle;
 
-  // Custom solutions
-  pricingCards[2].querySelector(".pricing-title").textContent =
-    t.pricing.custom.title;
-  pricingCards[2].querySelector(".pricing-subtitle").textContent =
-    t.pricing.custom.subtitle;
-  pricingCards[2].querySelector(".pricing-period").textContent =
-    t.pricing.custom.period;
-  const customFeatures = pricingCards[2].querySelectorAll(
-    ".pricing-features li"
-  );
-  t.pricing.custom.features.forEach((feature, i) => {
-    if (customFeatures[i]) {
-      customFeatures[i].textContent = feature;
-    }
-  });
+  const contactInfo = document.querySelector(".contact-info");
+  contactInfo.querySelector("h3").textContent = t.contact.infoTitle;
+  contactInfo.querySelector("p").textContent = t.contact.infoText;
 
-  // Update CTA section
-  document.querySelector(".contact-section h3").textContent =
-    t.pricing.cta.title;
-  document.querySelector(".contact-section p").textContent =
-    t.pricing.cta.subtitle;
-  document.querySelector(".contact-button").textContent = t.pricing.cta.button;
+  const contactForm = document.querySelector(".contact-form");
+  contactForm.querySelector("h3").textContent = t.contact.formTitle;
 
-  // Update Modal
-  document.querySelector(".modal-header h3").textContent = t.modal.title;
-  document.querySelector(".modal-header p").textContent = t.modal.subtitle;
+  const formGroups = contactForm.querySelectorAll(".form-group");
+  if (formGroups.length >= 4) {
+    formGroups[0].querySelector("label").textContent = t.contact.nameLabel;
+    formGroups[0].querySelector("input").placeholder =
+      t.contact.namePlaceholder;
 
-  const formLabels = document.querySelectorAll(".form-group label");
-  if (formLabels.length >= 4) {
-    formLabels[0].textContent = t.modal.nameLabel;
-    formLabels[1].textContent = t.modal.emailLabel;
-    formLabels[2].textContent = t.modal.projectLabel;
-    formLabels[3].textContent = t.modal.messageLabel;
+    formGroups[1].querySelector("label").textContent = t.contact.emailLabel;
+    formGroups[1].querySelector("input").placeholder =
+      t.contact.emailPlaceholder;
+
+    formGroups[2].querySelector("label").textContent = t.contact.projectLabel;
+    formGroups[2].querySelector("select option:first-child").textContent =
+      t.contact.projectPlaceholder;
+
+    formGroups[3].querySelector("label").textContent = t.contact.messageLabel;
+    formGroups[3].querySelector("textarea").placeholder =
+      t.contact.messagePlaceholder;
   }
 
-  const formInputs = document.querySelectorAll(".form-group input");
-  if (formInputs.length >= 3) {
-    formInputs[0].placeholder = t.modal.namePlaceholder;
-    formInputs[1].placeholder = t.modal.emailPlaceholder;
-    formInputs[2].placeholder = t.modal.projectPlaceholder;
-  }
-
-  const textarea = document.querySelector(".form-group textarea");
-  if (textarea) {
-    textarea.placeholder = t.modal.messagePlaceholder;
-  }
-
-  const submitButton = document.querySelector(".submit-button");
+  const submitButton = contactForm.querySelector(".submit-button");
   if (submitButton) {
-    submitButton.textContent = t.modal.submitButton;
+    submitButton.textContent = t.contact.submitButton;
   }
 
-  // Update contact methods text
-  const contactMethods = document.querySelectorAll(".contact-method span");
+  // Update contact methods
+  const contactMethods = document.querySelectorAll(".contact-method");
   contactMethods.forEach((method, index) => {
-    if (t.modal.contactMethods[index]) {
-      method.textContent = t.modal.contactMethods[index];
+    const methodData = Object.values(t.contact.contactMethods)[index];
+    if (methodData) {
+      method.querySelector("span").textContent = methodData.title;
+      method.querySelector("small").textContent = methodData.subtitle;
     }
   });
 
@@ -567,15 +502,13 @@ function switchLanguage(lang) {
   if (footerContact) {
     const emailLink = footerContact.querySelector("a");
     if (emailLink) {
-      footerContact.innerHTML = `${t.footer.contact} <a href="mailto:ipdeveloper2001@gmail.com
-">ipdeveloper2001@gmail.com
-</a>`;
+      footerContact.innerHTML = `${t.footer.contact} <a href="mailto:ipdeveloper2001@gmail.com">ipdeveloper2001@gmail.com</a>`;
     }
   }
 
   // Restart typing animation with new language
   if (typingElement) {
-    clearTimeout(typingTimeout); // zaustavi prethodno tipkanje
+    clearTimeout(typingTimeout);
     currentText = "";
     isDeleting = false;
     currentIndex = 0;
@@ -638,33 +571,6 @@ if (typingElement) {
   setTimeout(type, 1000);
 }
 
-// Contact Modal Functions
-function openContactModal() {
-  const modal = document.getElementById("contactModal");
-  if (modal) {
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
-}
-
-function closeContactModal() {
-  const modal = document.getElementById("contactModal");
-  if (modal) {
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-  }
-}
-
-// Close modal on outside click
-const contactModal = document.getElementById("contactModal");
-if (contactModal) {
-  contactModal.addEventListener("click", (e) => {
-    if (e.target.id === "contactModal") {
-      closeContactModal();
-    }
-  });
-}
-
 // Handle form submission
 function handleSubmit(event) {
   event.preventDefault();
@@ -688,9 +594,8 @@ ${data.message}`);
   window.location.href = `mailto:ipdeveloper2001@gmail.com
 ?subject=${subject}&body=${body}`;
 
-  // Close modal after a short delay
+  // Reset form after a short delay
   setTimeout(() => {
-    closeContactModal();
     event.target.reset();
   }, 500);
 }
@@ -811,45 +716,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update on resize
   window.addEventListener("resize", initMobileMenu);
 });
-
-// Add CSS for modal active state if not already in your CSS
-const style = document.createElement("style");
-style.textContent = `
-.contact-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.contact-modal.active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 1;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  transform: translateY(-20px);
-  transition: transform 0.3s ease;
-}
-
-.contact-modal.active .modal-content {
-  transform: translateY(0);
-}
-`;
-
-document.head.appendChild(style);
