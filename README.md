@@ -5,7 +5,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 ## About the Website
-My personal portfolio, showcasing web development projects, skills, education, and contact information. This website highlights responsive design, interactive elements, and a professional presentation of work.
+My personal portfolio, showcasing web development projects, skills, education, and contact information. This website highlights responsive design, interactive elements, and a professional presentation of work. 
 
 ## Demo
 You can view the live demo here: [Ivan Pavlovic Portfolio Demo](https://ivanpavlovic-web.github.io/ivanpavlovic-web-portfolio/)
