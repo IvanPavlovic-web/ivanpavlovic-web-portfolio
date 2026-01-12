@@ -15,7 +15,7 @@ Note: The demo runs as a static website and requires no backend server.
 
 ## Installation
 
-### Method 1: Clone with Git 
+### Method 1: Clone with Git
 ```bash
 git clone https://github.com/IvanPavlovic-web/ivanpavlovic-web-portfolio.git
 cd vatroservis-centar
