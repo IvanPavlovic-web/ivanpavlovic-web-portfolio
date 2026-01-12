@@ -116,6 +116,7 @@ const translations = {
       title: "Projects",
       projectNames: [
         "NCR Voyix Agent Tool",
+        "QR Code Menu",
         "Vatroservis Centar",
         "SweetForma",
         "MI Studio - Visual & Print Studio",
@@ -716,3 +717,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update on resize
   window.addEventListener("resize", initMobileMenu);
 });
+
